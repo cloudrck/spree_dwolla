@@ -3,7 +3,9 @@ module Spree
     skip_before_filter :verify_authenticity_token
 
     ssl_required
-
+	def create
+		Dwolla.create(dwolla_webhook_params)
+	end
     def transaction_status
       # Wait 5 seconds for any previous action
       # to finish, before processing the
@@ -66,6 +68,10 @@ module Spree
       def payment_method
         Spree::PaymentMethod.find(:first, :conditions => [ "lower(name) = ?", 'dwolla' ]) || raise(ActiveRecord::RecordNotFound)
       end
+       private
+	def dwolla_webhook_params
+		params.require(:dwolla).permit(:details)
+	end
 
   end
 end
