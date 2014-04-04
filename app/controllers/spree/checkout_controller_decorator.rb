@@ -3,7 +3,8 @@ module Spree
     after_filter :create_dwolla_payment, :only => [:update]
     def checkout_params
     	unless params[checkout].blank?
-    		params.require(checkout).permit(:source, :payment_method)
+    		params.require(checkout).permit(:source, :payment_method, :oauth_token, :pin, :funding_source_id)
+    		#params.require(checkout).permit(:source, :payment_method)
     	end
     end
     def payment_method
