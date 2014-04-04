@@ -3,9 +3,7 @@ module Spree
     skip_before_filter :verify_authenticity_token
 
     ssl_required
-	def create
-		Dwolla.create(dwolla_webhook_params)
-	end
+    
     def transaction_status
       # Wait 5 seconds for any previous action
       # to finish, before processing the
