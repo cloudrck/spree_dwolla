@@ -1,7 +1,11 @@
 module Spree
   CheckoutController.class_eval do
     after_filter :create_dwolla_payment, :only => [:update]
-
+    def checkout_params
+    	unless params[checkout].blank?
+    		params.require(checkout).permit(:source, :payment_method)
+    	end
+    end
     def payment_method
       Spree::PaymentMethod.find(:first, :conditions => [ "lower(name) = ?", 'dwolla' ]) || raise(ActiveRecord::RecordNotFound)
     end
