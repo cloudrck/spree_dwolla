@@ -13,7 +13,6 @@ module Spree
     preference :sandbox, :boolean, :default => false
     preference :enable_debug, :boolean, :default => false
 
-    attr_accessible :preferred_dwolla_id, :preferred_key, :preferred_secret, :preferred_oauth_scope, :preferred_sandbox, :preferred_allow_funding_sources, :preferred_default_funding_source, :preferred_allow_ach, :preferred_your_oauth_token, :preferred_your_pin, :preferred_enable_debug
 
     def supports?(source)
       true
