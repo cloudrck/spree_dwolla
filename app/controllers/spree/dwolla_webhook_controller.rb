@@ -68,7 +68,6 @@ module Spree
       def payment_method
         Spree::PaymentMethod.find(:first, :conditions => [ "lower(name) = ?", 'dwolla' ]) || raise(ActiveRecord::RecordNotFound)
       end
-       private
 	def dwolla_webhook_params
 		params.require(:dwolla).permit(:details)
 	end
