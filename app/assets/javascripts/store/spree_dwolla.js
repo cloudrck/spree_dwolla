@@ -1,5 +1,3 @@
-//= require store/spree_frontend
-
 SpreeDwolla = {
   qs: function(key) {
     key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&");
