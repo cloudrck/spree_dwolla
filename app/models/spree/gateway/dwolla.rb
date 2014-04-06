@@ -58,7 +58,8 @@ module Spree
             :amount => (amount/100), # amount is given in cents; expected in dollars
             :pin => dwolla_checkout.pin,
             :fundsSource => dwolla_checkout.funding_source_id,
-            :notes => gateway_options[:order_id]
+            #:notes => gateway_options[:order_id]
+            :notes => amount
           }, dwolla_checkout.oauth_token)
 
         dwolla_checkout.update_column(:transaction_id, transaction_id)
