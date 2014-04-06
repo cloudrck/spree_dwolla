@@ -1,5 +1,5 @@
 require 'dwolla'
-#require 'money'
+require 'money'
 module Spree
   class Gateway::Dwolla < Gateway
     preference :dwolla_id, :string
