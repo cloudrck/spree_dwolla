@@ -51,7 +51,7 @@ module Spree
         order_id = gateway_options[:order_id].split('-')[0]
         payment_id = gateway_options[:order_id].split('-')[1]
         @payment = Spree::Payment.find_by_identifier(payment_id)
-        money = Money.new(amount, "USD")
+        money = Money.new(amount.to_i, "USD")
         transaction_id = provider::Transactions.send(
           {
             :destinationId => preferred_dwolla_id,
