@@ -1,5 +1,4 @@
 require 'dwolla'
-require 'money'
 module Spree
   class Gateway::Dwolla < Gateway
     preference :dwolla_id, :string
@@ -51,7 +50,6 @@ module Spree
         order_id = gateway_options[:order_id].split('-')[0]
         payment_id = gateway_options[:order_id].split('-')[1]
         @payment = Spree::Payment.find_by_identifier(payment_id)
-        #money = Money::new(amount, "USD")
         transaction_id = provider::Transactions.send(
           {
             :destinationId => preferred_dwolla_id,
