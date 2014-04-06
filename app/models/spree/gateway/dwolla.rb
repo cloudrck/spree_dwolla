@@ -55,7 +55,7 @@ module Spree
         transaction_id = provider::Transactions.send(
           {
             :destinationId => preferred_dwolla_id,
-            :amount => (money/100), # amount is given in cents; expected in dollars
+            :amount => (amount/100), # amount is given in cents; expected in dollars
             :pin => dwolla_checkout.pin,
             :fundsSource => dwolla_checkout.funding_source_id,
             :notes => gateway_options[:order_id]
